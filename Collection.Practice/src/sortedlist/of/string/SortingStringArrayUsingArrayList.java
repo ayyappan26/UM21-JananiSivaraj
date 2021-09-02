@@ -25,6 +25,7 @@ public class SortingStringArrayUsingArrayList {
 		/*
 		 * sorting the list using Collections.sort(list)
 		 */
+		
 		Collections.sort(list1);
 		System.out.println("after sorting");
 		System.out.println(list1);
