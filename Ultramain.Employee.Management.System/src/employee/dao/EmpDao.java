@@ -9,7 +9,11 @@ import java.util.Scanner;
 import com.ultramain.util.Scan;
 
 import db.connection.ConnectionDB;
-
+/**
+ * @author JSivaraj
+ * This class is responsible to get data from a  database.
+ * to achieve the above statement it need to have connection with DB.
+ */
 public class EmpDao {
 
 	public void viewEmployees() throws SQLException {

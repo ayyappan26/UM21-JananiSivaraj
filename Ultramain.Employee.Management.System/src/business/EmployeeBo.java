@@ -7,6 +7,11 @@ import com.ultramain.util.Scan;
 
 import employee.dao.EmpDao;
 
+/**
+ * @author JSivaraj
+ * In Business Object class , it interacts with user.
+ *
+ */
 public class EmployeeBo {
 	EmpDao dao = new EmpDao();
 
