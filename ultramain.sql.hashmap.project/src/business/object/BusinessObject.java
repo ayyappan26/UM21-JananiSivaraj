@@ -6,6 +6,14 @@ import java.util.Scanner;
 import dao.DetailsDao;
 import scan.Scan;
 
+/**
+ * @author JSivaraj
+ * In BO class we give a overview of the methods. Like which needs to be executed. 
+ * Which class needs to be executed according to the user interaction
+ * 1. it will ask users to pick choice.
+ * 2. and according to the choice it will map the method to be executed.
+ *
+ */
 public class BusinessObject {
 	DetailsDao dao = new DetailsDao();
 
@@ -30,7 +38,9 @@ public class BusinessObject {
 			System.out.println("enter 1 or 2");
 		}
 	}
-
+/*
+ * viewAllEmployee method will map the method from DAO class method which views all the table.
+ */
 	public void viewAllEmployees() {
 		try {
 			dao.viewAllDetails();
@@ -40,6 +50,9 @@ public class BusinessObject {
 		}
 
 	}
+	/*
+	 * viewParticularEmployee method will map the method from DAO class method which views only the given ID values
+	 */
 
 	public void viewParticularEmployee() {
 		Scanner scan = Scan.getScannerInstance();
