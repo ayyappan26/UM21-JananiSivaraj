@@ -1,4 +1,4 @@
-package com.ultramain.util;
+package scan;
 
 import java.util.Scanner;
 
@@ -17,3 +17,6 @@ public class Scan {
 	}
 
 }
+
+
+
