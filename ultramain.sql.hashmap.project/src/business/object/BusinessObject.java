@@ -1,9 +1,12 @@
 package business.object;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 
-import dao.DetailsDao;
+import dao.EmpDetailsDao;
+import dto.EmpDto;
 import scan.Scan;
 
 /**
@@ -15,9 +18,10 @@ import scan.Scan;
  *
  */
 public class BusinessObject {
-	DetailsDao dao = new DetailsDao();
+	EmpDetailsDao empDao = new EmpDetailsDao();
 
 	public void viewEmployeeDetails() {
+		HashMap<Integer, EmpDto> empMap=null;
 		Scanner scan = Scan.getScannerInstance();
 		int choice = 0;
 		do {
@@ -29,7 +33,7 @@ public class BusinessObject {
 
 		switch (choice) {
 		case 1:
-			viewAllEmployees();
+			this.viewAllEmployees();
 			break;
 		case 2:
 			viewParticularEmployee();
@@ -43,7 +47,9 @@ public class BusinessObject {
  */
 	public void viewAllEmployees() {
 		try {
-			dao.viewAllDetails();
+			 
+			HashMap<Integer, EmpDto> empMap =empDao.viewAllDetails();//new Haash
+			printEmpDetials(empMap);
 		} catch (SQLException e) {
 
 			System.out.println(e.getMessage());
@@ -56,15 +62,25 @@ public class BusinessObject {
 
 	public void viewParticularEmployee() {
 		Scanner scan = Scan.getScannerInstance();
-		int id;
-		System.out.println("Enter Employee ID to view details:");
-		id = scan.nextInt();
-		try {
-			dao.getparticualarDetail(id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		int id;
+//		System.out.println("Enter Employee ID to view details:");
+//		id = scan.nextInt();
+//		try {
+//			//dao.getparticualarDetail(id);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 
+	}
+	
+	public void printEmpDetials(HashMap<Integer, EmpDto> empMap) {
+		Set<Integer> empIds  = empMap.keySet();
+		for(Integer empId : empIds) {
+			EmpDto dto = empMap.get(empId);
+			System.out.println("Employee Id : " + dto.getFname());
+			System.out.println("First Name : "+dto.getFname());
+			
+		}
 	}
 
 }

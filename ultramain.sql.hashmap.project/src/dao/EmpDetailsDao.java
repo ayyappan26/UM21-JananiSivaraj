@@ -9,38 +9,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 import connection.DBConnection;
-import dto.Users;
+import dto.EmpDto;
 
 /**
  * @author JSivaraj 
  * In Data Access Object class we are interacting with SQL to bring data.
  *
  */
-public class DetailsDao {
+public class EmpDetailsDao {
 	
 //created a hash map
-	HashMap<Integer, Users> hash_map = new HashMap<Integer, Users>();
+	HashMap<Integer, EmpDto> empMap = new HashMap<Integer, EmpDto>();
 
-	public void viewAllDetails() throws SQLException {
-		HashMap();
-		for (Integer i : hash_map.keySet()) {
-			Users us = hash_map.get(i);
+	public HashMap<Integer, EmpDto> viewAllDetails() throws SQLException {
+		getAllEmployees();
+		/*
+		for (Integer i : empMap.keySet()) {
+			EmpDto us = empMap.get(i);
 			System.out.println("user ID: " + us.getId() + "|First name:   " + us.getFname() + "|Last Name:   "
 					+ us.getLname() + "|Email Id:   " + us.getMail());
 
 		}
+		*/
+		return empMap;
 
 	}
 
-	public void getparticualarDetail(int choiceofuser) throws SQLException {
-		HashMap();
-		Users us = hash_map.get(choiceofuser);
-		System.out.println("user ID: " + us.getId() + "|First name:   " + us.getFname() + "|Last Name:   "
-				+ us.getLname() + "|Email Id:   " + us.getMail());
+	public void getparticualarDetail(int empId) throws SQLException {
+		
 
 	}
 
-	public void HashMap() throws SQLException {
+	private void getAllEmployees() throws SQLException {
 		Connection con = DBConnection.getDbConnection();
 		String query = "SELECT * FROM employees";
 		Statement st = con.createStatement();
@@ -48,13 +48,14 @@ public class DetailsDao {
 		
 		while (rs.next()) {
 			
+			
 			Integer id = rs.getInt("EMPLOYEE_ID");
 			String fname = rs.getString("FIRST_NAME");
 			String lname = rs.getString("LAST_NAME");
 			String mail = rs.getString("EMAIL");
 
-			Users u = new Users(id, fname, lname, mail);
-			hash_map.put(id, u);
+			EmpDto empDto = new EmpDto(id, fname, lname, mail);
+			empMap.put(id, empDto);
 		}
 
 	}

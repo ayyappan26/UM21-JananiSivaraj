@@ -1,12 +1,12 @@
 package dto;
 
-public class Users {
+public class EmpDto {
 	private int Id;
 	private String Fname;
 	private String Lname;
 	private String Mail;
 
-	public Users(int id, String fname, String lname, String mail) {
+	public EmpDto(int id, String fname, String lname, String mail) {
 		this.Id = id;
 		this.Fname = fname;
 		this.Lname = lname;
